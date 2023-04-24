@@ -11,16 +11,25 @@ public class Product {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+  private Long id;
   private String name;
   @ManyToOne
   private Category category;
 
-  public Integer getId() {
+  public Product() {
+
+  }
+
+  public Product(final String name, final Category category) {
+    this.name = name;
+    this.category = category;
+  }
+
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(final Long id) {
     this.id = id;
   }
 
@@ -28,7 +37,7 @@ public class Product {
     return name;
   }
 
-  public void setName(String name) {
+  public void setName(final String name) {
     this.name = name;
   }
 
@@ -36,7 +45,7 @@ public class Product {
     return category;
   }
 
-  public void setCategory(Category category) {
+  public void setCategory(final Category category) {
     this.category = category;
   }
 
