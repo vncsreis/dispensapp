@@ -1,5 +1,6 @@
 package com.dev.dispensa.models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -27,6 +28,11 @@ public class Storage {
   public Storage(final String name, final List<Product> products) {
     this.name = name;
     this.products = products;
+  }
+
+  public Storage(final String name) {
+    this.name = name;
+    this.products = new ArrayList<Product>();
   }
 
   public Long getId() {
