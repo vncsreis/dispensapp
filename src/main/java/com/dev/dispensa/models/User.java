@@ -3,6 +3,7 @@ package com.dev.dispensa.models;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,23 +11,28 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 
 @Entity
-public class Storage {
+public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
+
   private String name;
 
-  @OneToMany(cascade = CascadeType.ALL)
-  private List<Product> products;
+  @Column(unique = true)
+  private String email;
 
-  public Storage() {
+  @OneToMany(cascade = CascadeType.ALL)
+  private List<Storage> storages;
+
+  public User() {
 
   }
 
-  public Storage(final String name, final List<Product> products) {
+  public User(final String name, final String email, final List<Storage> storages) {
     this.name = name;
-    this.products = products;
+    this.email = email;
+    this.storages = storages;
   }
 
   public Long getId() {
@@ -45,12 +51,20 @@ public class Storage {
     this.name = name;
   }
 
-  public List<Product> getProducts() {
-    return products;
+  public String getEmail() {
+    return email;
   }
 
-  public void setProducts(List<Product> products) {
-    this.products = products;
+  public void setEmail(String email) {
+    this.email = email;
+  }
+
+  public List<Storage> getStorages() {
+    return storages;
+  }
+
+  public void setStorages(List<Storage> storages) {
+    this.storages = storages;
   }
 
 }
