@@ -16,14 +16,19 @@ public class Product {
   private String name;
   @ManyToOne(cascade = CascadeType.ALL)
   private Category category;
+  private Double value;
+  private int minimalAmount;
+  private int amount;
 
   public Product() {
-
   }
 
-  public Product(final String name, final Category category) {
+  public Product(final String name, final Category category, Double value, int minimalAmount, int amount) {
     this.name = name;
     this.category = category;
+    this.value = value;
+    this.minimalAmount = minimalAmount;
+    this.amount = amount;
   }
 
   public Long getId() {
@@ -48,6 +53,30 @@ public class Product {
 
   public void setCategory(final Category category) {
     this.category = category;
+  }
+
+  public Double getValue() {
+    return value;
+  }
+
+  public void setValue(Double value) {
+    this.value = value;
+  }
+
+  public int getAmount() {
+    return amount;
+  }
+
+  public void setAmount(int amount) {
+    this.amount = amount;
+  }
+
+  public int getMinimalAmount() {
+    return minimalAmount;
+  }
+
+  public void setMinimalAmount(int minimalAmount) {
+    this.minimalAmount = minimalAmount;
   }
 
 }

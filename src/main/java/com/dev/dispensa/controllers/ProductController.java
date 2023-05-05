@@ -51,7 +51,8 @@ public class ProductController {
         throw new Exception();
       }
 
-      Product newProduct = new Product(productDao.getName(), productCategory.get());
+      Product newProduct = new Product(productDao.getName(), productCategory.get(), productDao.getValue(),
+          productDao.getMinimalAmount(), productDao.getAmount());
 
       newProduct = productRepository.save(newProduct);
 
