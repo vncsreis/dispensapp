@@ -41,26 +41,29 @@ public class ProductController {
 
   }
 
-  @PostMapping()
-  public ResponseEntity<Product> createProduct(@RequestBody ProductDao productDao) {
-    try {
-
-      Optional<Category> productCategory = categoryRepository.findById(productDao.getCategoryId());
-
-      if (productCategory.isEmpty()) {
-        throw new Exception();
-      }
-
-      Product newProduct = new Product(productDao.getName(), productCategory.get(), productDao.getValue(),
-          productDao.getMinimalAmount(), productDao.getAmount());
-
-      newProduct = productRepository.save(newProduct);
-
-      return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
-
-    } catch (Exception e) {
-      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
-
-  }
+  // @PostMapping()
+  // public ResponseEntity<Product> createProduct(@RequestBody ProductDao
+  // productDao) {
+  // try {
+  //
+  // Optional<Category> productCategory =
+  // categoryRepository.findById(productDao.getCategoryId());
+  //
+  // if (productCategory.isEmpty()) {
+  // throw new Exception();
+  // }
+  //
+  // Product newProduct = new Product(productDao.getName(), productCategory.get(),
+  // productDao.getValue(),
+  // productDao.getMinimalAmount(), productDao.getAmount());
+  //
+  // newProduct = productRepository.save(newProduct);
+  //
+  // return new ResponseEntity<>(newProduct, HttpStatus.CREATED);
+  //
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+  // }
+  //
+  // }
 }

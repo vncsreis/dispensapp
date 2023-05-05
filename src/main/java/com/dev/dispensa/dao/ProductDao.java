@@ -6,6 +6,7 @@ public class ProductDao {
   private Double value;
   private int minimalAmount;
   private int amount;
+  private Long storageId;
 
   public ProductDao() {
 
@@ -57,6 +58,14 @@ public class ProductDao {
 
   public void setAmount(int amount) {
     this.amount = amount;
+  }
+
+  public Long getStorageId() {
+    return storageId;
+  }
+
+  public void setStorageId(Long storageId) {
+    this.storageId = storageId;
   }
 
 }

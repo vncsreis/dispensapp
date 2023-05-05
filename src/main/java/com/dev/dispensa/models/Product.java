@@ -14,16 +14,18 @@ public class Product {
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Long id;
   private String name;
-  @ManyToOne(cascade = CascadeType.ALL)
-  private Category category;
   private Double value;
   private int minimalAmount;
   private int amount;
 
+  @ManyToOne(cascade = CascadeType.ALL)
+  private Category category;
+
   public Product() {
   }
 
-  public Product(final String name, final Category category, Double value, int minimalAmount, int amount) {
+  public Product(final String name, final Category category, Double value, int minimalAmount,
+      int amount) {
     this.name = name;
     this.category = category;
     this.value = value;
