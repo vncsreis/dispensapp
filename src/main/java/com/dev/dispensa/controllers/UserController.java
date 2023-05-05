@@ -31,6 +31,31 @@ public class UserController {
   @Autowired
   StorageRepository storageRepository;
 
+  @GetMapping()
+  public ResponseEntity<List<User>> getUsers() {
+    try {
+      List<User> users = userRepository.findAll();
+
+      return new ResponseEntity<>(users, HttpStatus.OK);
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
+  @PostMapping()
+  public ResponseEntity<User> createUser(@RequestBody UserDao userDao) {
+    try {
+      User user = new User(userDao.getName(), userDao.getEmail(), new ArrayList<>());
+
+      user = userRepository.save(user);
+
+      return new ResponseEntity<>(user, HttpStatus.CREATED);
+
+    } catch (Exception e) {
+      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+  }
+
   @GetMapping("/{userId}/storages")
   public ResponseEntity<List<Storage>> getUserStorages(@PathVariable("userId") Long userId) {
     try {
@@ -48,20 +73,6 @@ public class UserController {
       return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
-  }
-
-  @PostMapping()
-  public ResponseEntity<User> createUser(@RequestBody UserDao userDao) {
-    try {
-      User user = new User(userDao.getName(), userDao.getEmail(), new ArrayList<>());
-
-      user = userRepository.save(user);
-
-      return new ResponseEntity<>(user, HttpStatus.CREATED);
-
-    } catch (Exception e) {
-      return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-    }
   }
 
   @PostMapping("/{userId}/storages")
