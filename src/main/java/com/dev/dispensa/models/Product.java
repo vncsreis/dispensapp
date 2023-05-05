@@ -33,6 +33,16 @@ public class Product {
     this.amount = amount;
   }
 
+  public Product(final Long id, final String name, final Category category, Double value, int minimalAmount,
+      int amount) {
+    this.id = id;
+    this.name = name;
+    this.category = category;
+    this.value = value;
+    this.minimalAmount = minimalAmount;
+    this.amount = amount;
+  }
+
   public Long getId() {
     return id;
   }
